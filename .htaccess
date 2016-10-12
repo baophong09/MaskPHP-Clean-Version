@@ -1,0 +1,15 @@
+# turnon rewrite
+RewriteEngine On
+
+# no direct any file access allowed
+RewriteRule ^system|library|cache|module|config index.php [L]
+
+# no direct script access allowed
+RewriteRule \.(php|cgi|sql)$ index.php [L]
+
+# allow access static file
+#RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# all to index
+RewriteRule ^ index.php [L]
